@@ -1,0 +1,20 @@
+# No envs or binaries—ever
+openvino_secure_env/
+venv/
+env/
+*.pyd
+*.dll
+__pycache__/
+*.pyc
+*.pyo
+
+# Temps/outputs
+out.mp4
+*.log
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

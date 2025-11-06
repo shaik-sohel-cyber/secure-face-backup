@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Selective Face Blur — Upload</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root { --bg:#0b0c10; --card:#12141a; --text:#e8edf2; --muted:#94a3b8; --accent:#3b82f6; }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial; background:var(--bg); color:var(--text); }
+    .wrap{ max-width:980px; margin:48px auto; padding:0 16px; }
+    h1{ margin:0 0 10px; font-weight:700; letter-spacing:.3px; }
+    p.lead{ color:var(--muted); margin:0 0 24px; }
+    .card{ background:var(--card); border:1px solid #1e2330; border-radius:14px; padding:22px; }
+    label{ display:block; font-weight:600; margin:14px 0 8px; }
+    .hint{ color:var(--muted); font-size:13px; margin-top:6px; }
+    input[type=file]{ width:100%; padding:12px; border:1px solid #252b3a; background:#0f1117; color:var(--text); border-radius:10px; }
+    .row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .row > div{ min-width:0; }
+    .actions{ display:flex; gap:12px; margin-top:22px; }
+    button{ background:var(--accent); color:white; border:none; padding:12px 16px; border-radius:10px; font-weight:600; cursor:pointer; }
+    button:hover{ filter:brightness(1.05); }
+    .footer{ color:var(--muted); font-size:13px; margin-top:18px; }
+    .select{ width:100%; padding:12px; border:1px solid #252b3a; background:#0f1117; color:var(--text); border-radius:10px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Selective Face Blur</h1>
+    <p class="lead">Upload a video and the face images you want to keep unblurred. Everyone else will be blurred.</p>
+
+    <div class="card">
+      <form action="/process" method="post" enctype="multipart/form-data">
+        <label for="faces">Known face images (select multiple)</label>
+        <input id="faces" name="faces" type="file" accept=".jpg,.jpeg,.png" multiple required />
+        <div class="hint">Tip: upload 1–3 clear, front-facing photos per person for best results.</div>
+
+        <label for="video" style="margin-top:18px;">Video file</label>
+        <input id="video" name="video" type="file" accept=".mp4,.avi,.mov" required />
+        <div class="hint">Supports common formats (MP4, AVI, MOV). 720p–1080p recommended.</div>
+
+        <!-- (Optional) If you later expose threshold or blur style via form, add controls here. -->
+
+        <div class="actions">
+          <button type="submit">Start Processing</button>
+        </div>
+      </form>
+
+      <div class="footer">
+        Processing runs in the background. You’ll see a progress page and a download link when done.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
